@@ -21,14 +21,14 @@ ctrl + super + shift +{b,s}
 ctrl + super + shift +{9,0}
 	exec {qutebrowser,firefox}
 #					Music player et al
-ctrl + super + shift +{m,d,s,c}
-	exec {termite -e "mocp /run/media/johnvile/abisoundtrack",termite -e "mplayer http://ice.somafm.com/dronezone" ,termite -e "mplayer http://ice.somafm.com/missioncontrol",termite -e "mplayer http://ice4.somafm.com/cliqhop-256-mp3"}
-#                   bspwm hotkeys
-#    quit/restart bspwm
+ctrl + super + shift +{m,d,s,c,@v}
+	exec {termite -e "mocp -A /run/media/johnvile/abisoundtrack",termite -e "mplayer http://ice.somafm.com/dronezone" ,termite -e "mplayer http://ice.somafm.com/missioncontrol",termite -e "mplayer http://ice4.somafm.com/cliqhop-256-mp3",termite -e "vis"}
+#					bspwm hotkeys
+#					quit/restart bspwm
 ctrl + super +{q,r}
     bspc {quit,wm -r}
 #					close and kill
-shift + {_,alt + }q
+shift + alt + q
 	bspc node -{c,k}
 #					set the window state
 alt + shift {t,shift + t,s,f}
@@ -42,3 +42,20 @@ alt + {_,shift + }{1-9,0}
 #					focus the node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
+#                   Media Fn Keys
+#                   Media Key : Lower audio volume
+XF86AudioLowerVolume
+    pavolume -10%
+#                   Media Key : Raise audio volume
+XF86AudioRaiseVolume
+    pavolume +10%
+#                   Media Key : Mute card #1
+XF86AudioMute
+    pavolume toggle
+#                   Lower brightness
+XF86MonBrightnessDown
+    xbacklight -dec 10
+#                   Raise Brigtness
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
