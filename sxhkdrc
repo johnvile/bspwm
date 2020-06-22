@@ -1,0 +1,44 @@
+# wm independent hotkey
+#					make sxhkd reload its configuration files:
+alt + Escape
+	pkill -USR1 -x sxhkd
+#					PROGRAME LAUNCHER HOTKEYS
+#
+#					System menu show on HDMI OUTPUT ONLY "-m 0"	
+ctrl + space
+    dmenu_run -fn "-xos4-terminus-medium-r-*-*-24-*" -nb "#3F3F3F" -m 0 -p "ROBOT-TO OKOKU"
+#
+#					Terminal emulator
+alt + Return
+	termite
+#					file manager					
+ctrl + super + shift +{p,h}
+	exec {pcmanfm,termite -e 'htop task manager' -e htop}
+#					Config Editor
+ctrl + super + shift +{b,s}
+	exec {termite -e "vim -n /home/johnvile/.config/bspwm/bspwmrc",termite -e "vim -n /home/johnvile/.config/sxhkd/sxhkdrc"}
+#                   Browsers
+ctrl + super + shift +{9,0}
+	exec {qutebrowser,firefox}
+#					Music player et al
+ctrl + super + shift +{m,d,s,c}
+	exec {termite -e "mocp /run/media/johnvile/abisoundtrack",termite -e "mplayer http://ice.somafm.com/dronezone" ,termite -e "mplayer http://ice.somafm.com/missioncontrol",termite -e "mplayer http://ice4.somafm.com/cliqhop-256-mp3"}
+#                   bspwm hotkeys
+#    quit/restart bspwm
+ctrl + super +{q,r}
+    bspc {quit,wm -r}
+#					close and kill
+shift + {_,alt + }q
+	bspc node -{c,k}
+#					set the window state
+alt + shift {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+#					focus the next/previous node in the current desktop
+alt + Tab
+    bspc node -f {next}.local
+#					focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+#					focus the node in the given direction
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
