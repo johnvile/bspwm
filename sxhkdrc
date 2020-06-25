@@ -2,12 +2,9 @@
 #					make sxhkd reload its configuration files:
 alt + Escape
 	pkill -USR1 -x sxhkd
-#					PROGRAME LAUNCHER HOTKEYS
-#
 #					System menu show on HDMI OUTPUT ONLY "-m 0"	
 ctrl + space
     dmenu_run -fn "-xos4-terminus-medium-r-*-*-24-*" -nb "#3F3F3F" -m 0 -p "ROBOT-TO OKOKU"
-#
 #					Terminal emulator
 alt + Return
 	termite
@@ -23,8 +20,7 @@ ctrl + super + shift +{9,0}
 #					Music player et al
 ctrl + super + shift +{m,d,s,c,@v}
 	exec {termite -e "mocp -A /run/media/johnvile/abisoundtrack",termite -e "mplayer http://ice.somafm.com/dronezone" ,termite -e "mplayer http://ice.somafm.com/missioncontrol",termite -e "mplayer http://ice4.somafm.com/cliqhop-256-mp3",termite -e "vis"}
-#					bspwm hotkeys
-#					quit/restart bspwm
+#					bspwm hotkeys / quit/restart bspwm
 ctrl + super +{q,r}
     bspc {quit,wm -r}
 #					close and kill
@@ -42,20 +38,12 @@ alt + {_,shift + }{1-9,0}
 #					focus the node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
-#                   Media Fn Keys
-#                   Media Key : Lower audio volume
-XF86AudioLowerVolume
-    pavolume -10%
-#                   Media Key : Raise audio volume
+#                   Media keys
 XF86AudioRaiseVolume
-    pavolume +10%
-#                   Media Key : Mute card #1
-XF86AudioMute
-    pavolume toggle
-#                   Lower brightness
-XF86MonBrightnessDown
-    xbacklight -dec 10
-#                   Raise Brigtness
-XF86MonBrightnessUp
-    xbacklight -inc 10
+	pactl set-sink-volume 0 +5%
 
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -10%
+
+XF86AudioMute
+	amixer -q set Master toggle
