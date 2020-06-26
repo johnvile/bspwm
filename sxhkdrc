@@ -13,7 +13,7 @@ ctrl + super + shift +{p,h}
 	exec {pcmanfm,termite -e 'htop task manager' -e htop}
 #					Config Editor
 ctrl + super + shift +{b,s}
-	exec {termite -e "vim -n /home/johnvile/.config/bspwm/bspwmrc",termite -e "vim -n /home/johnvile/.config/sxhkd/sxhkdrc"}
+	exec {termite -e "vim -n ~/.config/bspwm/bspwmrc",termite -e "vim -n ~/.config/sxhkd/sxhkdrc"}
 #                   Browsers
 ctrl + super + shift +{9,0}
 	exec {qutebrowser,firefox}

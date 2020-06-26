@@ -1,6 +1,6 @@
 #!/bin/sh
 #set -U SXHKD_SHELL sh
-/home/johnvile/.bin/autostart.sh & # tint2, redshift, nm-aplet, volumeicon. Nitrogen --restore , unclutter
+~/.bin/autostart.sh & # tint2, redshift, nm-aplet, volumeicon. Nitrogen --restore , unclutter
 xset -dpms &
 Xset b off &
 xset s off &
