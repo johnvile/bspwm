@@ -3,3 +3,6 @@ xrandr --output eDP --mode 1366x768 --pos 215x0 --rotate normal --output HDMI-0 
 dex -a ~/.config/autostart/ & # tint2, redshift, nm-aplet, volumeicon.
 unclutter &
 nitrogen --restore &
+#sleep 05 &
+#xcompmgr &
+#pcmanfm -d &
