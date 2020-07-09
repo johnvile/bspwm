@@ -1,28 +1,27 @@
-# wm independent hotkey
-#					make sxhkd reload its configuration files:
-alt + Escape
+alt + Escape #make sxhkd reload its configuration files:
 	pkill -USR1 -x sxhkd
-#					System menu show on HDMI OUTPUT ONLY "-m 0"	
+#                   System menu show on HDMI OUTPUT ONLY "-m 0"	
 ctrl + space
-    dmenu_run -fn "-xos4-terminus-medium-r-*-*-24-*" -nb "#3F3F3F" -m 0 -p "ROBOT-TO OKOKU"
+    dmenu_run -fn "-xos4-terminus-medium-r-*-*-24-*" -nb "#3F3F3F" -m 0 -p " ROBOT-TO OKOKU /"
+##3F3F3F
 #					Terminal emulator
 alt + Return
 	termite
 #					file manager					
-ctrl + super + shift +{p,h}
-	exec {pcmanfm,termite -e 'htop task manager' -e htop}
+alt+ shift +{p,h,e}
+	exec {pcmanfm,termite -e 'htop task manager' -e htop,termite -e "vifm"}
 #					Config Editor
-ctrl + super + shift +{b,s}
-	exec {termite -e "vim -n ~/.config/bspwm/bspwmrc",termite -e "vim -n ~/.config/sxhkd/sxhkdrc"}
+#alt + shift +{e}
+#	exec {termite -e "vifm"}
 #                   Browsers
-ctrl + super + shift +{9,0}
-	exec {qutebrowser,firefox}
+ctrl + super + shift +{9,0,8}
+	exec {qutebrowser,firefox,termite -e "castero"}
 #					Music player et al
-ctrl + super + shift +{m,d,s,c,@v}
-	exec {termite -e "mocp -A /run/media/johnvile/abisoundtrack",termite -e "mplayer http://ice.somafm.com/dronezone" ,termite -e "mplayer http://ice.somafm.com/missioncontrol",termite -e "mplayer http://ice4.somafm.com/cliqhop-256-mp3",termite -e "vis"}
-#					bspwm hotkeys / quit/restart bspwm
-ctrl + super +{q,r}
-    bspc {quit,wm -r}
+ctrl + super + shift +{m,d,s,c}
+	exec {termite -e "mocp -A /run/media/johnvile/abisoundtrack",termite -e "mplayer http://ice.somafm.com/dronezone" ,termite -e "mplayer http://ice.somafm.com/missioncontrol",termite -e "mplayer http://ice4.somafm.com/cliqhop-256-mp3"}
+#					bspwm hotkeys / quit/ restart bspwm
+ctrl + super +{q,r,Del}
+    bspc {quit,wm -r,shutdown now -h}
 #					close and kill
 shift + alt + q
 	bspc node -{c,k}
@@ -36,14 +35,14 @@ alt + Tab
 alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 #					focus the node in the given direction
-super + {_,shift + }{Left,Down,Up,Right}
+alt + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 #                   Media keys
 XF86AudioRaiseVolume
 	pactl set-sink-volume 0 +5%
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -10%
+	pactl set-sink-volume 0 -5%
 
 XF86AudioMute
 	amixer -q set Master toggle
